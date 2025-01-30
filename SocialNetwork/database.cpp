@@ -315,7 +315,10 @@ void DataBase::cancelRequest(QString sender, QString receiver)
 
 void DataBase::sendRequest(QString sender, QString receiver)
 {
-    std::map<QString,std::list<QString>>::iterator itr = this->requests.find(sender);
+    if(haveRequest(sender,receiver) || areFriends(&users[sender],&users[receiver]))
+        return;
+
+    std::map<QString,std::list<QString>>::iterator itr = this->requests.find(receiver);
 
     if(itr == this->requests.end()){
         this->requests[receiver].push_back(sender);
@@ -368,10 +371,11 @@ void DataBase::editUserData(QString username)
     User* user = &this->users[username];
 
     QSqlQuery update_Qry;
-    update_Qry.prepare("UPDATE users SET name = :name, password = :password, email = :email, avatar = :avatar WHERE username = :username;");
+    update_Qry.prepare("UPDATE users SET name = :name, password = :password, bio = :bio, email = :email, avatar = :avatar WHERE username = :username;");
 
     update_Qry.bindValue(":username",user->getUsername());
     update_Qry.bindValue(":password",user->getPassword());
+    update_Qry.bindValue(":bio",user->getBio());
     update_Qry.bindValue(":email",user->getEmail());
     update_Qry.bindValue(":name",user->getName());
 

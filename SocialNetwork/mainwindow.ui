@@ -38,10 +38,10 @@ QPushButton {
 }</string>
     </property>
     <property name="frameShape">
-     <enum>QFrame::Shape::StyledPanel</enum>
+     <enum>QFrame::StyledPanel</enum>
     </property>
     <property name="frameShadow">
-     <enum>QFrame::Shadow::Raised</enum>
+     <enum>QFrame::Raised</enum>
     </property>
     <widget class="QScrollArea" name="sideUserSA">
      <property name="geometry">
@@ -146,7 +146,7 @@ border-radius:35px;</string>
         <item>
          <spacer name="verticalSpacer">
           <property name="orientation">
-           <enum>Qt::Orientation::Vertical</enum>
+           <enum>Qt::Vertical</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
@@ -237,7 +237,7 @@ border : none;
 }</string>
      </property>
      <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
+      <enum>Qt::Horizontal</enum>
      </property>
     </widget>
     <widget class="QFrame" name="frame">
@@ -257,10 +257,10 @@ border : none;
 }</string>
      </property>
      <property name="frameShape">
-      <enum>QFrame::Shape::StyledPanel</enum>
+      <enum>QFrame::StyledPanel</enum>
      </property>
      <property name="frameShadow">
-      <enum>QFrame::Shadow::Raised</enum>
+      <enum>QFrame::Raised</enum>
      </property>
      <widget class="QPushButton" name="homePB">
       <property name="geometry">
@@ -301,10 +301,10 @@ border-radius : 35px;
 	border : none;</string>
      </property>
      <property name="frameShape">
-      <enum>QFrame::Shape::StyledPanel</enum>
+      <enum>QFrame::StyledPanel</enum>
      </property>
      <property name="frameShadow">
-      <enum>QFrame::Shadow::Raised</enum>
+      <enum>QFrame::Raised</enum>
      </property>
     </widget>
     <widget class="QFrame" name="frame_3">
@@ -321,10 +321,10 @@ border-radius : 35px;
 border-top-right-radius : 25px;</string>
      </property>
      <property name="frameShape">
-      <enum>QFrame::Shape::StyledPanel</enum>
+      <enum>QFrame::StyledPanel</enum>
      </property>
      <property name="frameShadow">
-      <enum>QFrame::Shadow::Raised</enum>
+      <enum>QFrame::Raised</enum>
      </property>
     </widget>
     <zorder>sideLogoutPB</zorder>
@@ -351,7 +351,7 @@ border-top-right-radius : 25px;</string>
 }</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="usersPageSVP">
      <widget class="QScrollArea" name="postsSA">
@@ -371,13 +371,23 @@ border-radius: 10px;
 QScrollArea QWidget {
 	background : transparent;
 }
+QScrollBar::handle:vertical {
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 6px;
+        min-height: 20px;
+    }
+
+    QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+        background: transparent;
+        height: 0px;
+    }
 
 
     
 </string>
       </property>
       <property name="frameShape">
-       <enum>QFrame::Shape::NoFrame</enum>
+       <enum>QFrame::NoFrame</enum>
       </property>
       <property name="widgetResizable">
        <bool>true</bool>
@@ -420,11 +430,24 @@ QScrollArea QWidget {
              <number>10</number>
             </property>
             <item>
+             <spacer name="verticalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>13</width>
+                <height>322</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
              <layout class="QHBoxLayout" name="horizontalLayout">
               <item>
                <spacer name="horizontalSpacer_2">
                 <property name="orientation">
-                 <enum>Qt::Orientation::Horizontal</enum>
+                 <enum>Qt::Horizontal</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -475,19 +498,6 @@ border : none;
               </item>
              </layout>
             </item>
-            <item>
-             <spacer name="verticalSpacer_2">
-              <property name="orientation">
-               <enum>Qt::Orientation::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>13</width>
-                <height>322</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
            </layout>
           </widget>
          </widget>
@@ -508,6 +518,7 @@ border : none;
        <string notr="true"> QFrame {
         border-radius: 15px;
 	background-color: rgb(255, 255, 255);
+	background-color: rgb(246, 255, 227);
    }
 QLabel {
 	background : transparent;
@@ -517,10 +528,10 @@ QLabel {
 </string>
       </property>
       <property name="frameShape">
-       <enum>QFrame::Shape::StyledPanel</enum>
+       <enum>QFrame::StyledPanel</enum>
       </property>
       <property name="frameShadow">
-       <enum>QFrame::Shadow::Raised</enum>
+       <enum>QFrame::Raised</enum>
       </property>
       <widget class="QPushButton" name="settingPB">
        <property name="geometry">
@@ -537,6 +548,7 @@ QLabel {
        <property name="styleSheet">
         <string notr="true">background : transparent;
 border : none;
+image:url(:/icons/cog_9884568.png)
 </string>
        </property>
        <property name="text">
@@ -585,8 +597,8 @@ border-radius : 100px;</string>
        <property name="styleSheet">
         <string notr="true">QLabel {
 	background : transparent;
-	font: 11pt &quot;Dosis&quot;;
 	color: rgb(0, 0, 0);
+	font: 18pt &quot;Arial Rounded MT Bold&quot;;
 }</string>
        </property>
        <property name="text">
@@ -617,18 +629,22 @@ border-radius : 100px;</string>
         <rect>
          <x>270</x>
          <y>110</y>
-         <width>271</width>
+         <width>501</width>
          <height>81</height>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true"/>
+        <string notr="true">color: rgb(80,80,80);
+</string>
        </property>
        <property name="text">
         <string>Bio</string>
        </property>
        <property name="textFormat">
-        <enum>Qt::TextFormat::PlainText</enum>
+        <enum>Qt::PlainText</enum>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
        </property>
        <property name="wordWrap">
         <bool>true</bool>
@@ -705,7 +721,7 @@ QLineEdit:hover {
        <string>Error Label</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignCenter</set>
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
      <widget class="QScrollArea" name="searchResultSA">
@@ -764,7 +780,7 @@ QScrollArea QWidget {
          <item>
           <spacer name="verticalSpacer_3">
            <property name="orientation">
-            <enum>Qt::Orientation::Vertical</enum>
+            <enum>Qt::Vertical</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
@@ -787,6 +803,12 @@ QScrollArea QWidget {
         <height>231</height>
        </rect>
       </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <property name="styleSheet">
        <string notr="true">QScrollArea {
 	background : rgba(255, 255, 255, 50);
@@ -795,7 +817,20 @@ border-radius: 10px;
 QScrollArea QWidget {
 	background : transparent;
 }
-    </string>
+QScrollBar::handle:horizontal {
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 6px;
+        min-width: 20px;
+    }
+
+    QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+        background: transparent;
+        width: 0px;
+    }
+
+    QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+        background: transparent;
+    }</string>
       </property>
       <property name="widgetResizable">
        <bool>true</bool>
@@ -822,7 +857,7 @@ QScrollArea QWidget {
          <item>
           <spacer name="horizontalSpacer">
            <property name="orientation">
-            <enum>Qt::Orientation::Horizontal</enum>
+            <enum>Qt::Horizontal</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>

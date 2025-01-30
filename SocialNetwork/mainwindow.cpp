@@ -162,6 +162,8 @@ void MainWindow::friendsPBCliced() {
 
     cleanUsersPostsSA();
     setUsersInformation(user);
+    ui->newPostPB->hide();
+    ui->newPostPB->setEnabled(false);
     ui->settingPB->hide();
 }
 
@@ -173,7 +175,12 @@ void MainWindow::setFirstUiSettings() {
     ui->searchResultSA->setLayout(ui->verticalLayout_3);
     ui->sideUserSA->setLayout(ui->verticalLayout);
     ui->verticalLayout->setAlignment(Qt::AlignHCenter);
-    ui->suggestSA->setLayout(ui->horizontalLayout_2);
+    ui->suggestSA->widget()->setLayout(ui->horizontalLayout_2);
+    ui->suggestSA->widget()->setMinimumHeight(220);
+    ui->suggestSA->widget()->setFixedHeight(220);
+    ui->suggestSA->setAlignment(Qt::AlignTop);
+    ui->suggestSA->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
 }
 
 QPixmap MainWindow::makeCircleScalePixmap(QPixmap & pixmap, QSize & size) {
@@ -296,8 +303,9 @@ void MainWindow::canceledRequest(QString receiver)
 }
 
 
-void MainWindow::on_homePB_clicked()
-{
+void MainWindow::on_homePB_clicked() {
+    ui->newPostPB->setEnabled(true);
+    ui->newPostPB->show();
     ui->mainSV->setCurrentIndex(0);
     setUsersInformation(this->user);
 }
@@ -336,3 +344,20 @@ void MainWindow::deletePostWidget(PostWidget *widget) {
     }
     widget = nullptr;
 }
+
+void MainWindow::on_mainSV_currentChanged(int arg1)
+{
+    QHBoxLayout * layout = qobject_cast<QHBoxLayout *>(ui->horizontalLayout_2);
+
+
+    while(layout->count() > 1) {
+        QLayoutItem * item = layout->itemAt(0);
+
+        suggestWidget* tmp = qobject_cast<suggestWidget*>(item->widget());
+        layout->removeItem(item);
+        tmp->setParent(nullptr);
+        tmp = nullptr;
+
+    }
+}
+

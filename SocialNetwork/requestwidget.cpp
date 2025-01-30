@@ -2,12 +2,13 @@
 
 RequestWidget::RequestWidget() {}
 
-RequestWidget::RequestWidget(User *sender)
+RequestWidget::RequestWidget(User *sender,QWidget* parent) : QFrame(parent)
 {
+    this->setFixedHeight(60);
     this->setStyleSheet(R"(
         QFrame{
-            background-color = rgb(255,255,255);
             border-radius:10px;
+            background-color = rgb(255,255,255);
         }
     )");
 
@@ -24,25 +25,28 @@ RequestWidget::RequestWidget(User *sender)
     avatar = new QLabel(this);
     QPixmap tmp = sender->getAvatar();
 
-    avatar->setPixmap(makeCircleScalePixmap(tmp,* new QSize(avatar->size())));
+    avatar->setPixmap(makeCircleScalePixmap(tmp,* new QSize(40,40)));
 
     accept = new QPushButton(this);
     ignore = new QPushButton(this);
 
+    accept->setText("accept");
+    accept->setFixedSize(60,40);
     accept->setStyleSheet(R"(
         QPushButton{
             background-color:rgb(50,94,58);
+            border-radius:5px;
         }
     )");
-    // add icon to css
 
+    ignore->setText("ignore");
+    ignore->setFixedSize(60,40);
     ignore->setStyleSheet(R"(
         QPushButton{
             background-color:rgb(94,50,58);
+            border-radius:5px;
         }
     )");
-    // add icon to css
-
 
     QHBoxLayout* layout = new QHBoxLayout(this);
 
