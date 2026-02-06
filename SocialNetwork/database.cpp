@@ -5,7 +5,7 @@ DataBase::DataBase() {
 
 
     DB = QSqlDatabase::addDatabase("QSQLITE");
-    DB.setDatabaseName("F:/Projects/Instagraph/social-network-alo-amiram/SocialNetwork/DataBase"); // enter the adderess here
+    DB.setDatabaseName("E:/Code/4031/DataStracture/Social Network Final Project/social-network-alo-amiram/SocialNetwork/DataBase"); // enter the adderess here
     //"F:/Projects/Instagraph/social-network-alo-amiram/SocialNetwork/DataBase"
     //"E:/Code/4031/DataStracture/Social Network Final Project/social-network-alo-amiram/SocialNetwork/DataBase"
 
@@ -454,6 +454,9 @@ void DataBase::deleteUser(QString username)
         r.second.remove(username);
     }
     this->editAllRequests();
+
+    // removing username from the map
+    this->users.erase(users.find(username));
 
 }
 
