@@ -24,7 +24,7 @@ I am proud to have collaborated on this project with my talented friend:
 
 ## 📋 Features
 
-Based on the *Social Network.pdf* requirements, the following modules were implemented:
+Based on the *[Social Network.pdf](https://github.com/Amir-chi/Social-Network/blob/main/Social%20Network.pdf)* requirements, the following modules were implemented:
 
 ### 1. User Management
 
