@@ -39,9 +39,9 @@ We implemented an intelligent **“Suggested Friends”** algorithm.
 
 The probability of two users knowing each other is calculated using the following formula:
 
-[
-P(A, B) = \frac{\text{Common Followers}}{\text{Total Distinct Followers}}
-]
+
+$$P(A, B) = \frac{|\text{Common Followers}|}{|\text{Total Unique Followers of both users}|}$$
+
 
 * **Smart Recommendations**: The system suggests the top 6 users based on the highest probability.
 * **Fallback Mechanism**: For new users with no common followers, the system suggests the 6 most recently joined members.
